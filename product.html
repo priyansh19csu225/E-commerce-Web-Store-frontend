@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+   
+    <link rel="stylesheet" href="css/bookorder.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Add Products</div>
+    <div class="content">
+      <div id="form" >
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Product Name</span>
+            <input type="text" placeholder="Enter product name" id="title" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Product Description</span>
+            <input type="text" placeholder="Enter Description" id="desc"required>
+          </div>
+          <div class="input-box">
+            <span class="details">Product Image</span>
+            <input type="text" placeholder="Enter image URL" id="image" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Product Categories</span>
+            <input type="text" placeholder="Enter Category" id="categories" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Product Size</span>
+            <input type="text" placeholder="Enter Size" id="size" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Product Color</span>
+            <input type="text" placeholder="Enter Color" id="color" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Product Price</span>
+            <input type="number" placeholder="Enter Price" id="price" required>
+          </div>
+        </div>
+        <div class="button">
+            <button onclick="addProd()">Add Product</button>
+        </div>
+      </div>
+      <script>
+        function addProd() {
+            var http = new XMLHttpRequest();
+            var categ = document.querySelector("#categories").value;
+            categ = categ.split(",");
+            var info = {
+                // "prodid": document.querySelector("#prodid").value,
+                "title": document.querySelector("#title").value,
+                 "desc": document.querySelector("#desc").value,
+                  "image": document.querySelector("#image").value,
+                   "categories": categ,
+                    "size": document.querySelector("#size").value,
+                     "color": document.querySelector("#color").value,
+                      "price": document.querySelector("#price").value,
+                
+            };
+            var data = JSON.stringify(info);
+            //var url = "https://infinite-woodland-43698.herokuapp.com/register";
+            var url = "https://shopping-webdev.herokuapp.com/new";
+            http.onreadystatechange = function () {
+                if (http.readyState == 4 && http.status == 200) {
+                    console.log(http.responseText);
+                    // var json = JSON.parse(this.responseText);
+                    // localStorage.setItem("token", json.token);
+                    location.href = "index.html";
+                }
+            }
+            http.open('post', url, true);
+            http.setRequestHeader('Content-Type', 'application/json');
+            http.setRequestHeader("Authorization", localStorage.getItem("token"));
+            http.send(data);
+        }
+    </script>
+
+    </div>
+  </div>
+
+</body>
+</html>

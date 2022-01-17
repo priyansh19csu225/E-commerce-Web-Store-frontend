@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+   
+    <link rel="stylesheet" href="css/bookorder.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Address Details</div>
+    <div class="content">
+      <div id="form" >
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" placeholder="Enter your name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Address Line 1</span>
+            <input type="text" placeholder="Address Line 1" id="address1" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Address Line 2</span>
+            <input type="text" placeholder="Address Line 2" id="address2" required>
+          </div>
+          <div class="input-box">
+            <span class="details">City</span>
+            <input type="text" placeholder="City" id="city" required>
+          </div>
+          <div class="input-box">
+            <span class="details">State</span>
+            <input type="text" placeholder="State" id="state"required>
+          </div>
+          <div class="input-box">
+            <span class="details">Pincode</span>
+            <input type="text" placeholder="Pincode" pattern="^[0-9]{6}$" id="pincode">
+          </div>
+        </div>
+        <div class="button">
+          <button onclick="book()">Book</button>
+        </div>
+      </div>
+      <script>
+        function book() {
+            var http = new XMLHttpRequest();
+            var details = {
+                "address":{
+                    "add_line1": document.querySelector("#address1").value,
+                "add_line2": document.querySelector("#address2").value,
+                "city": document.querySelector("#city").value,
+                "state": document.querySelector("#state").value,
+                "pincode": document.querySelector("#pincode").value
+
+                }
+            };
+            var data = JSON.stringify(details);
+            console.log(data);
+            //var url = "https://infinite-woodland-43698.herokuapp.com/register";
+            var url = "https://shopping-webdev.herokuapp.com/book";
+            http.onreadystatechange = function () {
+                if (http.readyState == 4 && http.status == 200) {
+                    console.log(http.responseText);
+                    var json = JSON.parse(this.responseText);
+                    location.href = "index.html";
+                }
+            }
+            http.open('post', url, true);
+            http.setRequestHeader('Content-Type', 'application/json');
+            http.setRequestHeader("Authorization", localStorage.getItem("token"));
+            http.send(data);
+        }
+    </script>
+    </div>
+  </div>
+
+</body>
+</html>

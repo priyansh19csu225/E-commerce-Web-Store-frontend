@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Password</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo.png" alt="logo" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+
+                    <li><a href="View Orders.html" >View Order</a></li>
+                    <li><a href="product.html">Add Product</a></li>
+                    <li><a href="deleteproduct.html">Delete Product</a></li>
+                    <!-- <li><a href="login.html">Login</a></li>
+                    <li><a href="registration.html">Register</a></li> -->
+                    <li><a href="cart.html">Add to Cart</a></li>
+                   
+                </ul>
+            </nav>
+            <a href="View cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+
+    <h1>Change Password</h1>
+    
+    <div class="small-container">
+        <div id ="row" class="row">
+            <div class="col-4 ">
+                <table>
+                    <tr>
+                        <td>Enter Old Password: </td>
+                        <td>
+                            <input id="pwd" style="width: 150px;" type="password" placeholder="Enter old password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Enter New Password: </td>
+                        <td>
+                            <input id="newpwd" style="width: 150px;" type="password" placeholder="Enter new password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button onclick="changepass()">Done</button>
+                        </td>
+                    </tr>
+                </table>
+        
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changepass() {
+            var http = new XMLHttpRequest();
+            var details = {
+                "pwd": document.querySelector("#pwd").value,
+                "newpwd":document.querySelector("#pwd").value
+            };
+            var data = JSON.stringify(details);
+            //var url = "https://infinite-woodland-43698.herokuapp.com/register";
+            var url = "https://shopping-webdev.herokuapp.com/change";
+            http.onreadystatechange = function () {
+                if (http.readyState == 4 && http.status == 200) {
+                    console.log(http.responseText);
+                    location.href = "index.html";
+                }
+            }
+            http.open('post', url, true);
+            http.setRequestHeader('Content-Type', 'application/json');
+            http.setRequestHeader("Authorization", localStorage.getItem("token"));
+            http.send(data);
+        }
+    </script>
+
+</body>
+</html>

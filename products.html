@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products | RedStore</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo.png" alt="logo" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Home</a></li>
+
+                    <!-- <li><a href="order.html">Book Order</a></li> -->
+                    <li><a href="View Orders.html" >View Order</a></li>
+                    <li><a href="product.html">Add Product</a></li>
+                    <li><a href="deleteproduct.html">Delete Product</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="registration.html">Register</a></li>
+                    <li><a href="cart.html">Add to Cart</a></li>
+                    <li><a href="View cart.html">View Cart</a></li>
+                </ul>
+            </nav>
+            <a href="View cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+
+    <!-- All Products -->
+
+    <div class="small-container">
+        
+            <a href="#" onclick="findProd()">Search</a>
+            <input type="text" placeholder="Enter Product Name" id="prodtitle">
+
+        
+        <div class="row row-2">
+            
+            
+            
+                <a href="#" onclick="dispProd()"> <h2>All Products</h2></a>
+                
+                <input type="radio" id="new" name="new" value="true" checked/>
+                <label for="new">Newer Products first</label>
+                <input type="radio" id="old"  name="new" value="false">
+                <label for="old">Older Products first</label>
+                <input type="text" placeholder="Product Category" id="prodcategory" style="width: 230px;"/>
+
+                <!-- <select  id="prodcategory" class="form-select" aria-label="Default select example"  >
+                    
+                    <option value="electronics">electronics</option>
+                    <option value=null>None</option>
+                    <option value="3">Three</option>
+                  </select> -->
+              
+        </div>
+
+
+        <div id ="row" class="row">
+            
+        </div>
+        <!-- <div class="row">
+            
+        </div>
+        <div class="row">
+            
+        </div> -->
+        
+    </div>
+
+   
+
+    <!-- javascript -->
+
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            }
+            else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+
+
+        function dispProd() {
+    var http = new XMLHttpRequest();
+    var div = document.querySelector("#row");
+    var category = document.querySelector("#prodcategory").value;
+    var url = "https://shopping-webdev.herokuapp.com/products";
+    if(document.getElementById('new').checked) {
+        if(category != ''){
+    url = "https://shopping-webdev.herokuapp.com/products?new=true&category=" + category;}
+    else{
+        url = "https://shopping-webdev.herokuapp.com/products?new=true";
+    }
+}else if(document.getElementById('old').checked) {
+if(category != ''){
+    url = "https://shopping-webdev.herokuapp.com/products?category=" + category;}
+    
+}
+  
+    console.log(url);
+  
+    http.onreadystatechange = function () {
+        if (http.readyState == 4 && http.status == 200) {
+            console.log(http.responseText);
+            var data = JSON.parse(http.responseText);
+            var htmlText = '';
+            for(var i=0 ;i< data.product.length ; i++){
+		  
+        htmlText +='<div id="col-4" class="col-4">';
+        htmlText +='<img src="' + data.product[i].img + '"></a>';
+        htmlText +='<div class="rating">';
+        htmlText +='<i class="fa fa-star"></i>';
+        htmlText +='<i class="fa fa-star"></i>';
+        htmlText +='<i class="fa fa-star"></i>';
+        htmlText +='<i class="fa fa-star"></i>';
+        htmlText +='<i class="fa fa-star-o"></i>';
+        htmlText +='</div>';
+        htmlText +='<p> Name: ' + data.product[i].title + '</p>';
+        htmlText +='<p>Description: ' + data.product[i].desc + '</p>';
+        htmlText +='<p>Price:' + data.product[i].price + '$</p>';
+         htmlText +='</div>';
+        }
+    
+         var div = document.getElementById("row");
+                  div.innerHTML = '';
+                  div.innerHTML += htmlText;    
+         
+          
+        }
+    }
+    http.open('get', url, true);
+    http.setRequestHeader('Content-Type', 'application/json');
+    http.setRequestHeader("Authorization", localStorage.getItem("token"));
+    http.send();
+}
+
+
+function findProd() {
+            var http = new XMLHttpRequest();
+            var div = document.querySelector("#row");
+            //div.innerHTML = "";
+            var title= document.querySelector("#prodtitle").value;
+            // var data = JSON.stringify(details);
+            var url = "https://shopping-webdev.herokuapp.com/search/" + title;
+            console.log(url);
+            http.onreadystatechange = function () {
+        if (http.readyState == 4 && http.status == 200) {
+            console.log(http.responseText);
+            var data = JSON.parse(http.responseText);
+            var htmlText = '';
+           
+        htmlText +='<div id="col-4" class="col-4">';
+        htmlText +='<img src="' + data.product.img + '"></a>';
+        htmlText +='<div class="rating">';
+        htmlText +='<i class="fa fa-star"></i>';
+        htmlText +='<i class="fa fa-star"></i>';
+        htmlText +='<i class="fa fa-star"></i>';
+        htmlText +='<i class="fa fa-star"></i>';
+        htmlText +='<i class="fa fa-star-o"></i>';
+        htmlText +='</div>';
+        htmlText +='<p> Name: ' + data.product.title + '</p>';
+        htmlText +='<p>Description: ' + data.product.desc + '</p>';
+        htmlText +='<p>Price:' + data.product.price + '$</p>';
+         htmlText +='</div>';
+        
+    
+         var div = document.getElementById("row");
+                  div.innerHTML = '';
+                  div.innerHTML += htmlText;    
+         
+          
+        }
+    }
+            
+            http.open('get', url, true);
+            http.setRequestHeader('Content-Type', 'application/json');
+            http.setRequestHeader("Authorization", localStorage.getItem("token"));
+            http.send();
+        }
+      
+    </script>
+
+</body>
+
+</html>
+
+
+

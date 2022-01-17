@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products | RedStore</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo.png" alt="logo" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <!-- <li><a href="order.html">Book Order</a></li> -->
+                    <li><a href="product.html">Add Product</a></li>
+                    <li><a href="deleteproduct.html">Delete Product</a></li>
+                    <!-- <li><a href="login.html">Login</a></li>
+                    <li><a href="registration.html">Register</a></li> -->
+                    <li><a href="cart.html">Add to Cart</a></li>
+                    <li><a href="View cart.html">View Cart</a></li>
+                   
+                </ul>
+            </nav>
+            <a href="View cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+
+    <div class="small-container">
+    <div id ="row" class="row">
+
+    </div>
+</div>
+
+
+
+
+    
+
+    <!-- javascript -->
+
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            }
+            else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+
+
+
+        (function () {
+    var http = new XMLHttpRequest();
+    var div = document.querySelector("#row");
+    
+    var url = "https://shopping-webdev.herokuapp.com/order";
+
+  
+    http.onreadystatechange = function () {
+        if (http.readyState == 4 && http.status == 200) {
+            console.log(http.responseText);
+            var data = JSON.parse(http.responseText);
+            var htmlText = '';
+
+            for(var j=0 ;j< data.order.length ; j++){
+               
+                htmlText +='<div class="col-new">';
+                    htmlText +='<p><b><h2 >Order</b> :' +(j+1)+ '</h2></p>';
+
+            for(var i=0 ;i< data.order[j].products.length ; i++){
+          
+         htmlText +='<div>';
+        htmlText +='<p><b>Product:</b> ' + data.order[j].products[i].title +  ' <b> Quantity:</b> ' + data.order[j].products[i].quantity + ' <b>Price:</b> ' + data.order[j].products[i].price + '</p>';
+         
+        // htmlText +='<p>' + data.order[j].products[i].price + '</p>';
+        htmlText +='</div>';
+        
+        }
+         htmlText +='<div>';
+            htmlText +='<p><input type="hidden" id="amount' + j + '" value="' + data.order[j].amount + '"><b>Total Amount:</b> ' + data.order[j].amount+ '</p>';
+            htmlText +='<p> <b>Address1: </b> ' + data.order[j].address.add_line1 + ' <b>Address2:</b> ' + data.order[j].address.add_line2+ ' <b>City:</b> ' + data.order[j].address.city+ ' <b>State:</b> ' + data.order[j].address.state+ ' <b>Pincode</b>: ' + data.order[j].pincode+ '</p>';
+            // htmlText +='<p>' + data.order[j].address.add_line1+ '</p>';
+            // htmlText +='<p>' + data.order[j].address.add_line2+ '</p>';
+            // htmlText +='<p>' + data.order[j].address.city+ '</p>';
+            // htmlText +='<p>' + data.order[j].address.state+ '</p>';
+            htmlText +='<p><b>STATUS:</b>' + data.order[j].status + '</p>';
+            
+            // htmlText +='';
+            // htmlText +='';
+             htmlText += '<button type="button" class="btn btn-primary" onclick="changestatus(this.id)" class="btn-1" id="' ;
+          htmlText += j +'" >Cancel Order</button>';
+            htmlText +='</div>';
+            htmlText +='</div>';
+
+        }
+    
+         var div = document.getElementById("row");
+                  div.innerHTML = '';
+                  div.innerHTML += htmlText;    
+         
+          
+        }
+    }
+    http.open('get', url, true);
+    http.setRequestHeader('Content-Type', 'application/json');
+    http.setRequestHeader("Authorization", localStorage.getItem("token"));
+    http.send();
+})();
+function changestatus(clicked) {
+
+            var http = new XMLHttpRequest();
+            var productid = clicked;
+            var info = {
+               "amount": document.querySelector("#amount" + clicked).value,    
+            };
+            var data = JSON.stringify(info);
+            console.log(info);
+            var url = "https://shopping-webdev.herokuapp.com/cancel";
+            http.onreadystatechange = function () {
+                if (http.readyState == 4 && http.status == 200) {
+                    console.log(http.responseText);
+                    // location.href = "dashboard.html";
+                    location.reload();
+                }
+            }
+            http.open('post', url, true);
+            http.setRequestHeader('Content-Type', 'application/json');
+            http.setRequestHeader("Authorization", localStorage.getItem("token"));
+            http.send(data);
+        }
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+

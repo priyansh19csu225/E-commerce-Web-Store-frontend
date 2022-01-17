@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="./css/common.css">
+    
+    <!-- <link rel="stylesheet" type="text/css" href="css/styles.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<!--
+    <h1>Add Products in Cart</h1>
+
+     <section id="section-1">
+                            <div class="row justify-between">
+                                <div class="col-1 col">
+                                    <div class="card">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1629842667000" width=25% height= 25% alt="image">
+                                            </a>
+                                           
+                                        </div>
+                                        <div class="desc">
+                                            <p id="productId">1</p>
+                                            <p id="title">product5</p>
+                                            <p id="quantity">2</p>
+                                            <p id="price">200</p>
+                                            <button onclick="addtocart()" class="btn-1">Add to Cart</button>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row justify-between">
+                                <div class="col-1 col">
+                                    <div class="card">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1629842667000" width=25% height= 25% alt="image">
+                                            </a>
+                                           
+                                        </div>
+                                        <div class="desc">
+                                            <p id="productId">2</p>
+                                            <p id="title">product6</p>
+                                            <p id="quantity">3</p>
+                                            <p id="price">600</p>
+                                            <button onclick="addtocart()" class="btn-1">Add to Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                    
+                        </section> -->
+             <!-- <section id="section-1"></section> -->
+
+             <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="index.html"><img src="images/logo.png" alt="logo" width="125px"></a>
+                    </div>
+                    <nav>
+                        <ul id="MenuItems">
+                            <li><a href="index.html">Home</a></li>
+        
+                            <!-- <li><a href="order.html">Book Order</a></li> -->
+                            <li><a href="View Orders.html" >View Order</a></li>
+                            <li><a href="product.html">Add Product</a></li>
+                            <li><a href="deleteproduct.html">Delete Product</a></li>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="registration.html">Register</a></li>
+                            
+                            <li><a href="View cart.html">View Cart</a></li>
+                        </ul>
+                    </nav>
+                    <a href="View cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+                    <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+                </div>
+            </div>
+        
+            <!-- All Products -->
+        
+            <div class="small-container">
+                
+                <div class="row row-2">
+                    
+                    <h2>All Products</h2>
+                    
+                        
+                </div>
+        
+        
+                <div id ="row" class="row">
+                    
+                </div>
+               
+              
+            </div>
+
+
+
+
+
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      
+         (function(){
+ // some code…
+ var http = new XMLHttpRequest();
+            var div = document.querySelector("#products");
+            
+            var url = "https://shopping-webdev.herokuapp.com/products";
+            http.onreadystatechange = function () {
+                if (http.readyState == 4 && http.status == 200) {
+                    console.log(http.responseText);
+                    // var productDiv = document.createElement("div");
+                    // productDiv.className = "col";
+                    // var p = document.createElement("p");
+                    var data = JSON.parse(http.responseText);
+                    var count = 1;
+                    var htmlText = '';
+
+
+                    for(var i=0 ;i< data.product.length ; i++){
+		  
+          htmlText +='<div id="col-4" class="col-4">';
+          htmlText +='<img src="' + data.product[i].img + '"></a>';
+          htmlText +='<div class="rating">';
+          htmlText +='<i class="fa fa-star"></i>';
+          htmlText +='<i class="fa fa-star"></i>';
+          htmlText +='<i class="fa fa-star"></i>';
+          htmlText +='<i class="fa fa-star"></i>';
+          htmlText +='<i class="fa fa-star-o"></i>';
+          htmlText +='</div>';
+          htmlText += '<p><input type="hidden"  id="title' + count + '" value="'+data.product[i].title+'"> Name: ' + data.product[i].title + '</p>';
+          htmlText += '<p  id="desc' + count + '"> Description: ' + data.product[i].desc + '</p>';
+          htmlText += '<p> quantity : <input type="number" id="quantity' + count + '"></p>';
+          htmlText += '<p><input type="hidden"  id="price' + count + '" value="'+data.product[i].price+'"> price: ' + data.product[i].price + '</p>';
+          htmlText += '<button type="button" class="btn btn-primary" onclick="addtocart(this.id)" class="btn-1" id="' ;
+          htmlText += count+'" >Add to Cart</button>';
+        //   htmlText += '<button onclick="removefromcart(this.id)" class="btn-1" id="r' ;
+        //   htmlText += count+'" >Remove</button>';
+          htmlText +='</div>';
+
+          count = count + 1;
+  console.log(data.product[i].title);
+          }
+
+                  var div = document.getElementById("row");
+                  div.innerHTML = '';
+                  div.innerHTML += htmlText;
+                 
+
+                }
+            }
+            http.open('get', url, true);
+            http.setRequestHeader('Content-Type', 'application/json');
+            http.setRequestHeader("Authorization", localStorage.getItem("token"));
+            http.send();
+})();
+
+
+
+function addtocart(clicked) {
+
+            var http = new XMLHttpRequest();
+            var productid = clicked;
+            var info = {
+                "productId": productid,
+               "title": document.querySelector("#title" + clicked).value,
+                    "quantity": document.querySelector("#quantity" + clicked).value,
+                    "price": document.querySelector("#price" + clicked).value
+                
+            };
+            var data = JSON.stringify(info);
+            console.log(info);
+            var url = "https://shopping-webdev.herokuapp.com/addcart";
+            http.onreadystatechange = function () {
+                if (http.readyState == 4 && http.status == 200) {
+                    console.log(http.responseText);
+                    var addbtn = document.getElementById(clicked);
+
+                    var btn = document.createElement("BUTTON");
+                    btn.innerHTML = '';
+                    btn.innerHTML = '<button type="button" class="btn btn-primary" onclick="removefromcart(this.id)" class="btn-1" id="r' + clicked + ' " >Remove</button> ' ;
+                
+                    addbtn.parentNode.insertBefore(btn, addbtn.nextSibling);
+                    // location.href = "dashboard.html";
+                }
+            }
+            http.open('post', url, true);
+            http.setRequestHeader('Content-Type', 'application/json');
+            http.setRequestHeader("Authorization", localStorage.getItem("token"));
+            http.send(data);
+        }
+
+        function removefromcart(clicked) {
+
+            var http = new XMLHttpRequest();
+            const arr = clicked.split("r");
+            var productid = arr[1];
+            var info = {
+                "productId": productid,
+            "title": document.querySelector("#title" + productid).value,
+                    "quantity": document.querySelector("#quantity" + productid).value,
+                    "price": document.querySelector("#price" + productid).value
+                
+            };
+            var data = JSON.stringify(info);
+            console.log(info);
+            var url = "https://shopping-webdev.herokuapp.com/delcartproduct";
+            http.onreadystatechange = function () {
+                if (http.readyState == 4 && http.status == 200) {
+                    console.log(http.responseText);
+                    var element = document.getElementById(clicked);
+                    element.parentNode.removeChild(element);
+                    // location.href = "dashboard.html";
+                }
+            }
+            http.open('post', url, true);
+            http.setRequestHeader('Content-Type', 'application/json');
+            http.setRequestHeader("Authorization", localStorage.getItem("token"));
+            http.send(data);
+        }
+    </script>
+
+</body>
+<script type="text/javascript">
+    
+</script>
+
+</html>

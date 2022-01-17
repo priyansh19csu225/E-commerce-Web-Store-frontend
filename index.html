@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedStore | Ecommerce Website Design</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html"><img src="images/logo.png" alt="logo" width="125px"></a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        
+                        <li><a href="products.html">Products</a></li>
+                        <!-- <li><a href="order.html">Book Order</a></li> -->
+                        <li><a href="View Orders.html" >View Order</a></li>
+                        <li><a href="product.html">Add Product</a></li>
+                        <li><a href="deleteproduct.html">Delete Product</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="changepass.html">Change password</a></li>
+                        <li><a href="registration.html">Register</a></li>
+                        
+                        <li><a href="cart.html">Add to Cart</a></li>
+                        <li><a href="View cart.html">View Cart</a></li>
+                        
+                    </ul>
+                    
+                </nav>
+                <a href="View cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+                <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <h1>One Place<br> for all your electronics!</h1>
+                    <p>Success isn't always about greatness. It;s about consistency. Consistent <br> hard work gains
+                        success. Greatness will come.</p>
+                    <a href="" class="btn">Explore Now &#8594;</a>
+                </div>
+                <div class="col-2">
+                    <img src="images/exclusive.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feadtued Categories -->
+
+    <div class="categories">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    <img src="images/category-1.jpg">
+                </div>
+                <div class="col-3">
+                    <img src="images/category-2.jpg">
+                </div>
+                <div class="col-3">
+                    <img src="images/category-3.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Products -->
+
+    <div class="small-container">
+        <h2 class="title">Featured Products</h2>
+        <div class="row">
+            <div class="col-4">
+                <img src="images/product-1.jpg"></a>
+                <h4>Red Printed T-Shirt</h4>
+                <!-- <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div> -->
+                <p>$50.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/product-2.jpg">
+                <h4>Red Printed T-Shirt</h4>
+                <!-- <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div> -->
+                <p>$50.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/product-3.jpg">
+                <h4>Red Printed T-Shirt</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>$50.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/product-4.jpg">
+                <h4>Red Printed T-Shirt</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>$50.00</p>
+            </div>
+        </div>
+        <h2 class="title">Latest Products</h2>
+        <div class="row">
+            <div class="col-4">
+                <img src="images/product-5.jpg">
+                <h4>Red Printed T-Shirt</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>$50.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/product-6.jpg">
+                <h4>Red Printed T-Shirt</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>$50.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/product-7.jpg">
+                <h4>Red Printed T-Shirt</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>$50.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/product-8.jpg">
+                <h4>Red Printed T-Shirt</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>$50.00</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <img src="images/product-9.jpg">
+                <h4>Red Printed T-Shirt</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>$50.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/product-10.jpg">
+                <h4>Red Printed T-Shirt</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>$50.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/product-11.jpg">
+                <h4>Red Printed T-Shirt</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>$50.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/product-12.jpg">
+                <h4>Red Printed T-Shirt</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>$50.00</p>
+            </div>
+        </div>
+    </div>
+
+   
+   
+
+    
+
+    <!-- javascript -->
+
+
+<script>
+
+var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            }
+            else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+
+    function getOrders() {
+        var http = new XMLHttpRequest();
+            var div = document.querySelector("#products");
+            div.innerHTML = "";
+            var url = "https://shopping-webdev.herokuapp.com/order";
+
+            http.onreadystatechange = function () {
+                if (http.readyState == 4 && http.status == 200) {
+                    var productDiv = document.createElement("div");
+                    productDiv.className = "col";
+                    var p = document.createElement("p");
+                    p.innerText = http.responseText;
+                    productDiv.appendChild(p);
+                    div.appendChild(productDiv);
+
+                }
+            }
+
+            http.open('get', url, true)
+            http.setRequestHeader('Content-Type', 'application/json');
+            http.setRequestHeader("Authorization", localStorage.getItem("token"));
+            http.send();
+    }
+
+//         function dispProd() {
+//             var http = new XMLHttpRequest();
+//             var div = document.querySelector("#products");
+//             var category = document.querySelector("#prodcategory").value;
+//             var url = "https://shopping-webdev.herokuapp.com/products";
+//             if(document.getElementById('new').checked) {
+//                 if(category != ''){
+//             url = "https://shopping-webdev.herokuapp.com/products?new=true&category=" + category;}
+//             else{
+//                 url = "https://shopping-webdev.herokuapp.com/products?new=true";
+//             }
+// }else if(document.getElementById('old').checked) {
+//    if(category != ''){
+//             url = "https://shopping-webdev.herokuapp.com/products?category=" + category;}
+        
+// }
+      
+//             console.log(url);
+//             div.innerHTML = "";
+//             http.onreadystatechange = function () {
+//                 if (http.readyState == 4 && http.status == 200) {
+//                     console.log(http.responseText);
+//                     var productDiv = document.createElement("div");
+//                     productDiv.className = "col";
+//                     var p = document.createElement("p");
+//                     p.innerText = http.responseText;
+//                     productDiv.appendChild(p);
+//                     div.appendChild(productDiv);
+//                 }
+//             }
+//             http.open('get', url, true);
+//             http.setRequestHeader('Content-Type', 'application/json');
+//             http.setRequestHeader("Authorization", localStorage.getItem("token"));
+//             http.send();
+//         }
+
+function dispProd() {
+var http = new XMLHttpRequest();
+var div = document.querySelector("#products");
+var category = document.querySelector("#prodcategory").value;
+var url = "https://shopping-webdev.herokuapp.com/products";
+if(document.getElementById('new').checked) {
+    if(category != ''){
+url = "https://shopping-webdev.herokuapp.com/products?new=true&category=" + category;}
+else{
+    url = "https://shopping-webdev.herokuapp.com/products?new=true";
+}
+}else if(document.getElementById('old').checked) {
+if(category != ''){
+url = "https://shopping-webdev.herokuapp.com/products?category=" + category;}
+
+}
+
+console.log(url);
+
+http.onreadystatechange = function () {
+    if (http.readyState == 4 && http.status == 200) {
+        console.log(http.responseText);
+
+        var data = JSON.parse(http.responseText);
+                var count = 1;
+                var htmlText = '';
+                
+
+htmlText += '<div style="margin: 0;padding: 0;background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);height: 100vh;display: flex;justify-content: center;align-items: center;">';
+htmlText +='<div class="Cart-Container" style="width: 70%; height: 100%; background-color: #ffffff; border-radius: 20px; box-shadow: 0px 25px 40px #1687d933;">';
+                        htmlText +='<div class="Header" style="margin: auto; width: 90%; height: 15%; display: flex; justify-content: space-between;align-items: center;">';
+                                htmlText += '<h3 class="Heading" style="font-size: 20px; font-family: "Open Sans"; font-weight: 700; color: #2F3841;">Shopping Cart</h3>';
+                                htmlText += '<h5 class="Action" style="font-size: 14px; font-family: "Open Sans"; font-weight: 600; color: #E44C4C;  cursor: pointer; border-bottom: 1px solid #E44C4C;">Remove all</h5>';
+                        htmlText += '</div>';
+htmlText += '<br><div class="Cart-Items" style="margin: auto; width: 90%; height: 90%; display: flex; flex-wrap: wrap;   justify-content: space-between; align-items: center;">';
+     for(var i=0 ;i< data.product.length ; i++){
+      
+        htmlText +='<div style="width: 30% ;display: flex; flex-direction: column";align-items: center;>';
+          //  htmlText +='<div style="width: 33%; text-align: center">'; 
+                   //     htmlText +=	'<div class="image-box" style="width: 15%; text-align: center;">';
+                            htmlText += '<img src="' + data.product[i].img + ' " style=" height:120px; width:120px; " />';
+                    //    htmlText +='</div>';
+                    //    htmlText +='<div class="about" style="height: 100%; width: 15%">';
+                            htmlText +='<input type="hidden"  id="title' + count + '" value="'+data.product[i].title+'" style="padding-top: 5px; line-height: 10px; font-size: 32px; font-family: "Open Sans"; font-weight: 800; color: #202020;">' + data.product[i].title + '</input>';
+                     //   htmlText +='</div>';
+           //  htmlText +='</div>'; 
+
+            // htmlText +='<div style="width: 33%; text-align: center">'; 
+                       // htmlText +='<div class="counter"style="width: 15%;display: flex;justify-content: space-between;align-items: center;">';
+                       //     htmlText +=	'<div class="btn" style=" width: 40px; height: 40px;border-radius: 50%;background-color: #d9d9d9;display: flex;justify-content: center;align-items: center;font-size: 20px;font-family: "Open Sans";font-weight: 900;color: #202020;cursor: pointer;  ">+</div>';
+                       //     htmlText +=	'<div class="count" style="font-size: 20px;font-family: "Open Sans";font-weight: 900;color: #202020;">2</div>';
+                       //     htmlText +='<div class="btn" style=" width: 40px; height: 40px;border-radius: 50%;background-color: #d9d9d9;display: flex;justify-content: center;align-items: center;font-size: 20px;font-family: "Open Sans";font-weight: 900;color: #202020;cursor: pointer;">-</div>';
+                     //   htmlText +='</div>'
+            // htmlText +='</div>'; 
+            // htmlText +='<div style="width: 33%; text-align: center">'; 
+                                 //   htmlText +='<div class="prices" style="height: 100%; text-align: center;">';
+                                       htmlText +=	'<div class="amount" style="padding-top: 20px; font-size: 16px; font-family: "Open Sans"; font-weight: 800; color: #202020;">' + data.product[i].desc + '</div>';
+                                        htmlText +=	'<div class="amount" style="padding-top: 20px; font-size: 16px; font-family: "Open Sans"; font-weight: 800; color: #202020;">' + data.product[i].price + '$</div>';
+                                       // htmlText +=	'<div class="save" style=" padding-top: 5px; font-size: 14px; font-family: "Open Sans"; font-weight: 600; color: #1687d9; cursor: pointer;"><u>Save for later</u></div>';
+                                       // htmlText +='<div class="remove" style="padding-top: 5px; font-size: 14px; font-family: "Open Sans"; font-weight: 600; color: #E44C4C; cursor: pointer;"><u>Remove</u></div>';
+                                //    htmlText +='</div>';
+           // htmlText +='</div>';
+         htmlText +='</div>';                           
+
+
+              
+}
+htmlText +='</div>';
+htmlText +='</div>';
+htmlText +='</div><br>';
+
+
+var productDiv = document.createElement("div");
+div.innerHTML = '';
+div.innerHTML += htmlText;
+
+div.appendChild(productDiv);
+       
+     
+      
+    }
+}
+http.open('get', url, true);
+http.setRequestHeader('Content-Type', 'application/json');
+http.setRequestHeader("Authorization", localStorage.getItem("token"));
+http.send();
+}
+
+
+    function findProd() {
+        var http = new XMLHttpRequest();
+        var div = document.querySelector("#products");
+        div.innerHTML = "";
+        var title= document.querySelector("#prodtitle").value;
+        // var data = JSON.stringify(details);
+        var url = "https://shopping-webdev.herokuapp.com/search/" + title;
+        console.log(url);
+        http.onreadystatechange = function () {
+            if (http.readyState == 4 && http.status == 200) {
+                console.log(http.responseText);
+                var productDiv = document.createElement("div");
+                productDiv.className = "col";
+                var p = document.createElement("p");
+                p.innerText = http.responseText;
+                productDiv.appendChild(p);
+                div.appendChild(productDiv);
+            }
+        }
+        http.open('get', url, true);
+        http.setRequestHeader('Content-Type', 'application/json');
+        http.setRequestHeader("Authorization", localStorage.getItem("token"));
+        http.send();
+    }
+  
+
+function dispCart() {
+var http = new XMLHttpRequest();
+// var details = {
+//     "cartid": document.querySelector("#cartid").value,
+
+// };
+// var data = JSON.stringify(details);
+
+var div = document.querySelector("#myTable");
+// div.innerHTML = "";
+var url = "https://shopping-webdev.herokuapp.com/cart";
+
+http.onreadystatechange = function () {
+    if (http.readyState == 4 && http.status == 200) {
+        console.log(http.responseText);
+        var data = JSON.parse(http.responseText);
+        var table = document.getElementById("myTable");
+      console.log(data.cart.products.length);
+
+      var row = table.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+
+        cell1.innerHTML = "Title" ;
+        cell2.innerHTML = "Quantity";
+        cell3.innerHTML = "Price" ;
+        
+        for(var i=0; i< data.cart.products.length ; i++){
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        
+        cell1.innerHTML = data.cart.products[i].title ;
+        cell2.innerHTML = data.cart.products[i].quantity;
+        cell3.innerHTML = data.cart.products[i].price ;
+        
+        
+        }
+      
+        
+       let amt = 0;
+         var para = document.getElementById("total");
+        for(let i=0 ; i< data.cart.products.length; i++){
+            amt += data.cart.products[i].price * data.cart.products[i].quantity;
+          }
+          para.innerHTML="amount"+amt;
+
+    }
+}
+
+http.open('get', url, true)
+http.setRequestHeader('Content-Type', 'application/json');
+http.setRequestHeader("Authorization", localStorage.getItem("token"));
+http.send();
+
+}
+
+</script>
+
+</body>
+
+</html>
